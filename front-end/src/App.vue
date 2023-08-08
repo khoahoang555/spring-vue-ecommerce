@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <the-header></the-header>
+    <the-header2></the-header2>
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -10,11 +10,10 @@
 
 <script lang="ts">
 
-
-import TheHeader from "@/components/layout/TheHeader.vue";
+import TheHeader2 from "@/components/layout/TheHeader2.vue";
 
 export default {
-  components: {TheHeader}
+  components: {TheHeader2}
 }
 </script>
 
