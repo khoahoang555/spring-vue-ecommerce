@@ -8,27 +8,43 @@
             src="/assets/images/logo.4a3964e.png"
         />
       </div>
-      <v-responsive
-        max-width="614"
-        max-height="44"
-      >
+<!--      <v-responsive-->
+<!--        max-width="614"-->
+<!--        max-height="44"-->
+<!--      >-->
+<!--        <v-text-field-->
+<!--          placeholder="Search for restaurant"-->
+<!--          variant="outlined"-->
+<!--          density="compact"-->
+<!--        >-->
+<!--          <template v-slot:prepend-inner>-->
+<!--            <v-btn size="44" class="mx-2">-->
+<!--              <v-icon size="16" icon="mdi-target" color="#939393" />-->
+<!--            </v-btn>-->
+<!--          </template>-->
+<!--          <template v-slot:append-inner>-->
+<!--            <v-btn size="44">-->
+<!--              <v-icon size="16" icon="mdi-magnify" color="#939393" />-->
+<!--            </v-btn>-->
+<!--          </template>-->
+<!--        </v-text-field>-->
+<!--      </v-responsive>-->
+      <v-sheet width="912" height="44" border rounded class="d-flex align-center">
+        <div class="d-flex align-center ml-5">
+          <v-icon size="16" icon="mdi-map-marker" color="#939393" class="mr-2"></v-icon>
+          <p style="color: #828282; margin-top: 1px;">New York</p>
+        </div>
+        <v-btn size="44" class="mx-2" rounded="0">
+          <v-icon size="16" icon="mdi-crosshairs-gps" color="#939393" />
+        </v-btn>
         <v-text-field
-          placeholder="Search for restaurant"
-          variant="outlined"
-          density="compact"
-        >
-          <template v-slot:prepend-inner>
-            <v-btn size="44" class="mx-2">
-              <v-icon icon="mdi-target" color="#707070"></v-icon>
-            </v-btn>
-          </template>
-          <template v-slot:append-inner>
-            <v-btn size="44">
-              <v-icon icon="mdi-magnify"></v-icon>
-            </v-btn>
-          </template>
-        </v-text-field>
-      </v-responsive>
+            placeholder="Search for restaurant"
+            variant="plain"
+            single-line
+            hide-details
+            density="compact"
+        />
+      </v-sheet>
     </v-container>
   </v-app-bar>
 </template>
@@ -39,7 +55,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 /*.v-text-field .v-input__control .v-input__slot {*/
 /*  min-height: auto !important;*/
 /*  display: flex !important;*/
@@ -60,4 +76,10 @@ export default {
 :deep(.v-field--appended) {
   padding-inline-end: 0px !important;
 }
+//:deep(.v-input) {
+//  --v-input-chips-margin-top: 4px !important;
+//}
+//:deep(.v-input--density-compact) {
+//  --v-input-chips-margin-bottom: 0px !important;
+//}
 </style>
