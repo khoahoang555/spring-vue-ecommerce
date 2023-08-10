@@ -8,7 +8,7 @@
             src="/assets/images/logo.4a3964e.png"
         />
       </div>
-      <v-sheet max-width="912" min-width="467" height="44" border rounded class="d-flex align-center">
+      <v-sheet id="search-field" max-width="912" width="912" height="44" border rounded class="d-flex align-center">
         <div class="d-flex align-center ml-5">
           <v-icon size="16" icon="mdi-map-marker" color="#939393" class="mr-2"></v-icon>
           <p style="color: #939393; margin-top: 1px;">New York</p>
@@ -27,7 +27,7 @@
           <v-icon size="16" icon="mdi-magnify" color="#939393" />
         </v-btn>
       </v-sheet>
-      <div class="ml-auto">
+      <div class="ml-auto d-flex align-center">
         <v-btn prepend-icon="mdi-account-circle-outline">
           <template v-slot:prepend>
             <v-icon size="24"></v-icon>
@@ -62,5 +62,10 @@ export default {
 :deep(input::placeholder) {
   color: #939393 !important;
   opacity: 1 !important;
+}
+@media only screen and (max-width: 800px) {
+  #search-field {
+    display: none !important;
+  }
 }
 </style>
