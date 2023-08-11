@@ -1,4 +1,31 @@
 <template>
+  <v-navigation-drawer
+      v-model="drawer"
+      location="left"
+      temporary
+      width="320"
+  >
+    <v-list>
+      <v-list-item width="100%">
+        <v-list-item-title class="font-weight-bold">Navbar</v-list-item-title>
+        <template v-slot:append>
+          <v-btn size="36" elevation="0" rounded>
+              <v-icon icon="mdi-close" color="#939393" />
+          </v-btn>
+        </template>
+      </v-list-item>
+      <v-list-group value="Dashboards">
+        <template v-slot:activator>
+          <v-list-item
+            prepend-icon="mdi-view-dashboard-variant-outline"
+            title="Dashboards"
+          >
+
+          </v-list-item>
+        </template>
+      </v-list-group>
+    </v-list>
+  </v-navigation-drawer>
   <v-app-bar height="64">
     <v-container class="d-flex align-center">
       <div class="mr-10">
@@ -40,7 +67,9 @@
           </template>
           (8)
         </v-btn>
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon
+          @click="drawer = !drawer"
+        ></v-app-bar-nav-icon>
       </div>
     </v-container>
   </v-app-bar>
@@ -48,7 +77,15 @@
 
 <script lang="ts">
 export default {
-
+  data() {
+    return {
+      drawer: false,
+      items: [
+          'Demo',
+          'Test'
+      ]
+    }
+  }
 }
 </script>
 
