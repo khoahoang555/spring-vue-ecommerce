@@ -1,39 +1,76 @@
 <template>
-  <v-app-bar height="70">
-    <v-container class="d-flex position-relative">
-      <div class="margin-main-logo">
-        <v-img
-            width="150"
-            height="30"
-            src="/assets/images/shopeefoodvn.png"
+  <v-navigation-drawer v-model="drawer" location="left" temporary width="320">
+    <v-list>
+      <v-list-item>
+        <v-list-item-title class="font-weight-bold">Bảng chọn</v-list-item-title>
+        <template v-slot:append>
+          <v-icon icon="mdi-close" style="color: var(--base-color-icon)" @click="drawer = !drawer"/>
+        </template>
+      </v-list-item>
+      <v-list-group value="Danh mục" active-color="var(--base-color-active)">
+        <template v-slot:activator="{ props }">
+          <v-list-item
+              v-bind="props"
+              prepend-icon="mdi-view-dashboard-variant-outline"
+              title="Danh mục"
+          >
+          </v-list-item>
+        </template>
+        <v-list-item
+          active-color="var(--base-color-active)"
+          v-for="(item, index) in categories"
+          :key="index"
+          :title="item"
+          :value="item"
         >
-        </v-img>
+        </v-list-item>
+      </v-list-group>
+    </v-list>
+  </v-navigation-drawer>
+  <v-app-bar height="64">
+    <v-container class="d-flex align-center">
+      <div class="mr-10">
+        <v-img
+            width="48"
+            height="48"
+            src="/assets/images/logo.4a3964e.png"
+        />
       </div>
-      <div class="main-container position-absolute d-flex">
-        <div class="select-provinces">
-            <v-select
-                v-model="select"
-                label="Select"
-                :items="provinces"
-                item-title="name"
-                item-value="id"
-                variant="outlined"
-                single-line
-                density="compact"
-                bg-color="#f0f0f0"
-                menu
-            >
-<!--              <template v-slot:selection="data">-->
-<!--                &lt;!&ndash; HTML that describe how select should render selected items &ndash;&gt;-->
-<!--                {{ data.item[0] }} - 97133 địa điểm-->
-<!--              </template>-->
-<!--              <template v-slot:item="data">-->
-<!--                &lt;!&ndash; HTML that describe how select should render items when the select is open &ndash;&gt;-->
-<!--                {{ data.name }} - {{ data.quantity }} địa điểm-->
-<!--              </template>-->
-            </v-select>
+      <v-sheet id="search-field" max-width="600" width="600" height="44" border rounded class="d-flex align-center">
+        <div class="d-flex align-center ml-5">
+          <v-icon size="16" icon="mdi-map-marker" style="color: var(--base-color-icon)" class="mr-2"></v-icon>
+          <p style="color: var(--base-color-icon); margin-top: 1px;">TP.HCM</p>
         </div>
-        <p>This is main container</p>
+        <v-btn size="44" class="mx-2" rounded="0">
+          <v-icon size="16" icon="mdi-crosshairs-gps" style="color: var(--base-color-icon)"/>
+        </v-btn>
+        <v-text-field
+            placeholder="Tìm cửa hàng, món ăn..."
+            variant="plain"
+            single-line
+            hide-details
+            density="compact"
+        />
+        <v-btn size="44" rounded="0">
+          <v-icon size="16" icon="mdi-magnify" style="color: var(--base-color-icon)"/>
+        </v-btn>
+      </v-sheet>
+      <div class="ml-auto d-flex align-center">
+        <v-btn prepend-icon="mdi-account-circle-outline">
+          <template v-slot:prepend>
+            <v-icon size="24"></v-icon>
+          </template>
+          Tài khoản
+        </v-btn>
+        <v-btn prepend-icon="mdi-cart-outline">
+          <template v-slot:prepend>
+            <v-icon size="24"></v-icon>
+          </template>
+          (8)
+        </v-btn>
+        <v-app-bar-nav-icon
+            @click="drawer = !drawer"
+        ></v-app-bar-nav-icon>
       </div>
     </v-container>
   </v-app-bar>
@@ -43,40 +80,39 @@
 export default {
   data() {
     return {
-      select: {
-        id: 1,
-        name: 'TP.HCM',
-        quantity: 9999
-      },
-      provinces: [
-        {
-          id: 1,
-          name: 'TP.HCM',
-          quantity: 9999
-        }
+      drawer: false,
+      items: [
+        'Demo',
+        'Test'
+      ],
+      categories: [
+          'Cơm',
+          'Phở',
+          'Đồ ăn nhanh',
+          'Nước'
       ]
     }
   }
 }
 </script>
 
-<style scoped>
-.margin-main-logo {
-  margin-left: 50px;
+<style lang="scss" scoped>
+:deep(.v-field--appended) {
+  padding-inline-end: 0px !important;
 }
 
-.position-relative {
-  position: relative;
+:deep(.v-field__input) {
+  padding-top: 3px !important;
 }
 
-.position-absolute {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+:deep(input::placeholder) {
+  color: var(--base-color-icon) !important;
+  opacity: 1 !important;
 }
 
-:deep(.v-select__selection-text) {
-  font-size: 14px;
+@media only screen and (max-width: 800px) {
+  #search-field {
+    display: none !important;
+  }
 }
 </style>

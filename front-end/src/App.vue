@@ -1,19 +1,20 @@
 <template>
-  <v-layout>
-    <the-header2></the-header2>
+  <v-layout class="d-flex flex-column">
+    <the-header></the-header>
     <v-main>
       <router-view></router-view>
     </v-main>
-    <v-footer></v-footer>
+    <the-footer></the-footer>
   </v-layout>
 </template>
 
 <script lang="ts">
 
-import TheHeader2 from "@/components/layout/TheHeader2.vue";
+import TheHeader from "@/components/layout/TheHeader.vue";
+import TheFooter from "@/components/layout/TheFooter.vue";
 
 export default {
-  components: {TheHeader2}
+  components: {TheFooter, TheHeader}
 }
 </script>
 
