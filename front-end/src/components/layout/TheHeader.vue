@@ -27,7 +27,11 @@
       </v-list-group>
     </v-list>
   </v-navigation-drawer>
-  <v-app-bar height="64">
+  <v-app-bar
+      height="64"
+      :elevation="isScrollOnTop ? 0 : 2"
+      v-scroll.value="onScroll"
+  >
     <v-container class="d-flex align-center">
       <div class="mr-10">
         <v-img
@@ -90,7 +94,17 @@ export default {
           'Phở',
           'Đồ ăn nhanh',
           'Nước'
-      ]
+      ],
+      isScrollOnTop: true
+    }
+  },
+  methods: {
+    onScroll() {
+      if (window.scrollY === 0) {
+        this.isScrollOnTop = true;
+      } else {
+        this.isScrollOnTop = false;
+      }
     }
   }
 }
